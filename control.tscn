@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://cs6bicgqqh23w"]
+
+[ext_resource type="Script" uid="uid://cf5lwclynvniu" path="res://control.gd" id="1_0fbet"]
+[ext_resource type="Shader" uid="uid://ownvqwufcdrh" path="res://button.gdshader" id="2_fj5cn"]
+[ext_resource type="Texture2D" uid="uid://cig7jrd5k705x" path="res://res/short.png" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://b7lsbi1ivjxtf" path="res://res/tall.png" id="3_ee4bf"]
+[ext_resource type="Texture2D" uid="uid://db8nbs32ekym0" path="res://res/select.png" id="3_iy58a"]
+[ext_resource type="Texture2D" uid="uid://drtvyk03w5rqq" path="res://res/grande.png" id="5_iy58a"]
+[ext_resource type="Texture2D" uid="uid://dtkxrgo1g1onh" path="res://res/brew.png" id="6_6a6wx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj5cn"]
+shader = ExtResource("2_fj5cn")
+shader_parameter/tex = ExtResource("3_iy58a")
+shader_parameter/bright = 1.0
+shader_parameter/button_color = Vector3(1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6a6wx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sky72"]
+shader = ExtResource("2_fj5cn")
+shader_parameter/tex = ExtResource("2_qtu10")
+shader_parameter/bright = 1.0
+shader_parameter/button_color = Vector3(1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ytqx"]
+shader = ExtResource("2_fj5cn")
+shader_parameter/tex = ExtResource("3_ee4bf")
+shader_parameter/bright = 0.5
+shader_parameter/button_color = Vector3(1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxugv"]
+shader = ExtResource("2_fj5cn")
+shader_parameter/tex = ExtResource("5_iy58a")
+shader_parameter/bright = 0.5
+shader_parameter/button_color = Vector3(1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eh0v1"]
+shader = ExtResource("2_fj5cn")
+shader_parameter/tex = ExtResource("6_6a6wx")
+shader_parameter/bright = 0.2
+shader_parameter/button_color = Vector3(1, 1, 1)
+
+[node name="Control" type="Control" unique_id=1909101113]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0fbet")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=355485881]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=355582240]
+layout_mode = 2
+
+[node name="BT_select" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1803878866]
+material = SubResource("ShaderMaterial_fj5cn")
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=235089590]
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=100345400]
+material = SubResource("ShaderMaterial_6a6wx")
+layout_mode = 2
+
+[node name="BT_short" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=910375228]
+material = SubResource("ShaderMaterial_sky72")
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="BT_tall" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=326187588]
+material = SubResource("ShaderMaterial_0ytqx")
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="BT_grande" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=33058178]
+material = SubResource("ShaderMaterial_pxugv")
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="BT_brew" type="Button" parent="MarginContainer/VBoxContainer" unique_id=900242281]
+material = SubResource("ShaderMaterial_eh0v1")
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1137254581]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BT_select" to="." method="_on_bt_select_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/BT_short" to="." method="_on_bt_short_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/BT_tall" to="." method="_on_bt_tall_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/BT_grande" to="." method="_on_bt_grande_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BT_brew" to="." method="_on_bt_brew_pressed"]
